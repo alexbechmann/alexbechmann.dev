@@ -4,12 +4,20 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import GitHub from "./icons/GitHub";
-import { Theme, IconButton, Avatar, Tooltip, NoSsr } from "@material-ui/core";
+import {
+  Theme,
+  IconButton,
+  Avatar,
+  Tooltip,
+  NoSsr,
+  Button,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import ProfilePicture from "./ProfilePicture";
 import Typist from "react-typist";
 import { useScrollDirection } from "../hooks/use-scroll-position";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const useStyles = makeStyles((theme: Theme) => ({
   menuButton: {
@@ -53,6 +61,10 @@ const Header = () => {
                 </Typist>
               </Typography>
               <div className={classes.grow} />
+              <Link href="/snippets" passHref>
+                <Button color="inherit">Code snippets</Button>
+              </Link>
+
               <Tooltip title="Browse some of my projects on GitHub">
                 <IconButton
                   color="inherit"

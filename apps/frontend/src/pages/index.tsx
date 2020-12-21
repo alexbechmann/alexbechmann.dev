@@ -29,7 +29,6 @@ const Index = () => {
   const classes = useStyles({});
   return (
     <Layout>
-      <CssBaseline />
       <Container maxWidth="md">
         <Grid container spacing={3}>
           <Grid item xs={12} sm={8}>
