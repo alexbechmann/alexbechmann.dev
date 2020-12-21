@@ -13,17 +13,17 @@ import { motion } from "framer-motion";
 
 const useStyles = makeStyles((theme: Theme) => ({
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
   grow: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   motion: {
     position: "fixed",
     zIndex: theme.zIndex.appBar,
     right: 0,
-    left: 0
-  }
+    left: 0,
+  },
 }));
 
 const Header = () => {
@@ -35,7 +35,7 @@ const Header = () => {
         className={classes.motion}
         animate={{ y: scrollDirection === "down" ? -64 : 0 }}
         transition={{
-          type: "tween"
+          type: "tween",
         }}
       >
         <AppBar position="relative">
@@ -49,7 +49,7 @@ const Header = () => {
                   stdTypingDelay={50}
                   cursor={{ hideWhenDone: true, hideWhenDoneDelay: 2000 }}
                 >
-                  Alex Bechmann CV.
+                  Alex Bechmann (Web Developer)
                 </Typist>
               </Typography>
               <div className={classes.grow} />

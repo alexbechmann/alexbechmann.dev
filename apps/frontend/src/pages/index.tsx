@@ -99,19 +99,6 @@ const Index = () => {
             </List>
           </Grid>
         </Grid>
-        <Divider className={classes.divider} />
-        <Typography gutterBottom variant="h5">
-          Professional experience
-        </Typography>
-        <Experience />
-        <Divider className={classes.divider} />
-        <Typography paragraph>
-          Please{" "}
-          <Link color="secondary" href="mailto:alex.bechmann@outlook.com">
-            contact me
-          </Link>{" "}
-          for references & exam documents.
-        </Typography>
       </Container>
     </Layout>
   );

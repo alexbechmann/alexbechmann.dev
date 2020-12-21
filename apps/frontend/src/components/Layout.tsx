@@ -10,9 +10,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     paddingRight: 0,
     [theme.breakpoints.up("sm")]: {
       paddingLeft: theme.spacing(3),
-      paddingRight: theme.spacing(3)
-    }
-  }
+      paddingRight: theme.spacing(3),
+    },
+  },
 }));
 
 const Layout = ({ children }) => {
@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
     <Fragment>
       <Header />
       <div className={classes.root}>{children}</div>
-      <Footer />
+      {/* <Footer /> */}
     </Fragment>
   );
 };

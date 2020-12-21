@@ -34,7 +34,7 @@ jobs:
           docker buildx ls
 
       - script: |
-          image=alexbechmann/cv-frontend
+          image=alexbechmann/dotdev
           docker buildx build \
             -t "${image}:$(tag)" \
             --platform linux/arm64 \
@@ -54,9 +54,4 @@ jobs:
       demands:
         - ARM_CLUSTER
     steps:
-      - script: kubectl get pods --all-namespaces
-        displayName: "Run a one-line script"
-
-      - script: ls
-
-      - script: helm upgrade sample-app --install --namespace cv-master --create-namespace ./iac/helm-charts/cv --set tag=$(tag)
+      - script: helm upgrade dotdev-master --install --namespace dotdev-master --create-namespace ./iac/helm-charts/dotdev --set tag=$(tag)

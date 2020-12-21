@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: "alexbechmann/cv-frontend:{{ .Values.tag }}"
+          image: "alexbechmann/dotdev:{{ .Values.tag }}"
           resources:
             requests:
               memory: "128Mi"
