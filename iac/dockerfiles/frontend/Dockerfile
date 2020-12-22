@@ -1,5 +1,6 @@
 FROM node:15 AS builder
 
+RUN apt-get update
 RUN apt-get install libvips
 
 WORKDIR /app
