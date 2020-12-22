@@ -4,4 +4,9 @@ export interface Note {
   //   Document: React.ComponentType;
 }
 
-export type NoteSlug = "lerna" | "nginx-ingress-yaml";
+export type NoteSlug =
+  | "lerna"
+  | "nginx-ingress-yaml"
+  | "install-helm-chart"
+  | "azure-pipelines-yaml"
+  | "install-helm-chart";
