@@ -43,7 +43,7 @@ jobs:
             --push \
             --progress=plain \
             ./apps/frontend
-        displayName: "Build cv-frontend"
+        displayName: "Build frontend"
 
   - job: Deploy
     dependsOn:
