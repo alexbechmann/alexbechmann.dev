@@ -44,7 +44,7 @@ jobs:
             --cache-to=type=registry,ref=${image}:$(cache_tag),mode=max \
             --push \
             --progress=plain \
-            ./iac/dockerfiles/frontend.Dockerfile
+            "./iac/dockerfiles/frontend.Dockerfile"
         displayName: "Build frontend"
 
   - job: Deploy
