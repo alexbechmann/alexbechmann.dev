@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { NotesPageProps } from ".";
 import { ParsedUrlQuery } from "querystring";
 import Layout from "../../components/Layout";
-import Document from "../../notes/lerna.mdx";
+import Document, { frontMatter, tableOfContents } from "../../notes/lerna.mdx";
 
 export interface NotePageProps {
   content: any;
