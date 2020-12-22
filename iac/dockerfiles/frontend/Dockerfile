@@ -1,5 +1,7 @@
 FROM node:15 AS builder
 
+RUN apt-get install libvips
+
 WORKDIR /app
 COPY package.json ./
 COPY lerna.json ./
