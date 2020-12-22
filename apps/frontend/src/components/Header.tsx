@@ -4,12 +4,13 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import GitHub from "./icons/GitHub";
-import { Theme, IconButton, Avatar, Tooltip, NoSsr } from "@material-ui/core";
+import { Theme, IconButton, Avatar, Tooltip, NoSsr, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import ProfilePicture from "./ProfilePicture";
 import Typist from "react-typist";
 import { useScrollDirection } from "../hooks/use-scroll-position";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const useStyles = makeStyles((theme: Theme) => ({
   menuButton: {
@@ -41,23 +42,24 @@ const Header = () => {
         <AppBar position="relative">
           <Container maxWidth="md">
             <Toolbar disableGutters>
-              <ProfilePicture />
-              <Typography variant="h6" color="inherit">
-                <Typist
-                  startDelay={2500}
-                  avgTypingDelay={100}
-                  stdTypingDelay={50}
-                  cursor={{ hideWhenDone: true, hideWhenDoneDelay: 2000 }}
-                >
-                  Alex Bechmann (Web Developer)
-                </Typist>
-              </Typography>
+              <Link href="/">
+                <a>
+                  <ProfilePicture />
+                </a>
+              </Link>
+              <Link href="/">
+                <a style={{ color: "inherit", textDecoration: "none" }}>
+                  <Typography variant="h6" color="inherit">
+                    Alex Bechmann (Web Developer)
+                  </Typography>
+                </a>
+              </Link>
               <div className={classes.grow} />
+              <Link href="/notes">
+                <Button color="inherit">Notes</Button>
+              </Link>
               <Tooltip title="Browse some of my projects on GitHub">
-                <IconButton
-                  color="inherit"
-                  href="https://github.com/alexbechmann"
-                >
+                <IconButton color="inherit" href="https://github.com/alexbechmann">
                   <GitHub />
                 </IconButton>
               </Tooltip>
