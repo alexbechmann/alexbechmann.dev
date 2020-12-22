@@ -7,7 +7,6 @@ import GitHub from "./icons/GitHub";
 import { Theme, IconButton, Avatar, Tooltip, NoSsr, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import ProfilePicture from "./ProfilePicture";
-import Typist from "react-typist";
 import { useScrollDirection } from "../hooks/use-scroll-position";
 import { motion } from "framer-motion";
 import Link from "next/link";
