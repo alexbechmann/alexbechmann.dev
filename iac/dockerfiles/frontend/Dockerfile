@@ -1,11 +1,7 @@
 FROM node:15 AS builder
 
-ARG API_HOST
-ARG ASSET_PREFIX
-
 WORKDIR /app
 COPY package.json ./
-COPY .npmrc ./
 COPY lerna.json ./
 COPY yarn.lock ./
 COPY ./apps/frontend/package.json ./apps/frontend/
