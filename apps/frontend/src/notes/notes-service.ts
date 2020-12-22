@@ -1,18 +1,26 @@
 import React from "react";
-import LernaDocument, { frontMatter, tableOfContents } from "./lerna.md";
-import type { Note } from "./note";
+import LernaDocument from "./lerna.md";
+import IngressDocument from "./ingress.md";
+import type { Note, NoteSlug } from "./note";
 
 export const notes: Note[] = [
+  {
+    title: "Nginx Ingress YAML",
+    slug: "nginx-ingress-yaml",
+  },
   {
     title: "Lerna",
     slug: "lerna",
   },
 ];
 
-export function getNoteDocument(slug: typeof notes[number]["slug"]): React.ComponentType {
+export function getNoteDocument(slug: NoteSlug): React.ComponentType {
   switch (slug) {
     case "lerna": {
       return LernaDocument;
+    }
+    case "nginx-ingress-yaml": {
+      return IngressDocument;
     }
 
     default: {
