@@ -1,7 +1,7 @@
 {
-  "name": "cv",
+  "name": "dotdev",
   "version": "1.0.0",
-  "description": "https://cv.alexbechmann.dev/",
+  "description": "https://alexbechmann.dev/",
   "private": true,
   "workspaces": [
     "apps/**"
@@ -22,5 +22,8 @@
   "homepage": "https://github.com/alexbechmann/cv#readme",
   "devDependencies": {
     "lerna": "^3.22.1"
+  },
+  "resolutions": {
+    "minipass": "2.7.0"
   }
 }
