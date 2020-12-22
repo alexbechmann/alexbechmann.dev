@@ -3,6 +3,8 @@ import { makeStyles } from "@material-ui/core";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { NotesPageProps } from ".";
 import { ParsedUrlQuery } from "querystring";
+import Layout from "../../components/Layout";
+import Document from "../../notes/lerna.mdx";
 
 export interface NotePageProps {
   content: any;
@@ -13,7 +15,12 @@ const useStyles = makeStyles((theme) => ({}));
 export function NotePage(props: NotePageProps) {
   const classes = useStyles(props);
   const {} = props;
-  return <div>{JSON.stringify(props)}</div>;
+  return (
+    <Layout>
+      {JSON.stringify(props)}
+      <Document />
+    </Layout>
+  );
 }
 
 export default NotePage;
@@ -22,11 +29,11 @@ const data = {
   "test/asdf": { title: "page is 3" },
 };
 
-interface Params extends ParsedUrlQuery {
+interface NotePageParams extends ParsedUrlQuery {
   slug: string[];
 }
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => {
+export const getStaticPaths: GetStaticPaths<NotePageParams> = async () => {
   return {
     paths: [
       {
@@ -39,9 +46,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<NotesPageProps, Params> = async ({
-  params,
-}) => {
+export const getStaticProps: GetStaticProps<NotesPageProps, NotePageParams> = async ({ params }) => {
   const slugChunks: string[] = params.slug as string[];
   const slug = slugChunks.join("/");
   console.log({ slug });
