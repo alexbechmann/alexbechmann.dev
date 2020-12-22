@@ -43,14 +43,14 @@ const Header = () => {
             <Toolbar disableGutters>
               <ProfilePicture />
               <Typography variant="h6" color="inherit">
-                <Typist
+                {/* <Typist
                   startDelay={2500}
                   avgTypingDelay={100}
                   stdTypingDelay={50}
                   cursor={{ hideWhenDone: true, hideWhenDoneDelay: 2000 }}
-                >
-                  Alex Bechmann (Web Developer)
-                </Typist>
+                > */}
+                Alex Bechmann (Web Developer)
+                {/* </Typist> */}
               </Typography>
               <div className={classes.grow} />
               <Tooltip title="Browse some of my projects on GitHub">
