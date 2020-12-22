@@ -1,24 +1,35 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
+import { Container, makeStyles } from "@material-ui/core";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { NotesPageProps } from ".";
 import { ParsedUrlQuery } from "querystring";
 import Layout from "../../components/Layout";
-import Document, { frontMatter, tableOfContents } from "../../notes/lerna.mdx";
+import { notes, getNoteDocument } from "../../notes/notes-service";
+import { Note } from "../../notes/note";
 
 export interface NotePageProps {
-  content: any;
+  note: Note;
 }
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& pre": {
+      background: "#232323",
+      padding: theme.spacing(2),
+      borderRadius: 3,
+    },
+  },
+}));
 
 export function NotePage(props: NotePageProps) {
   const classes = useStyles(props);
-  const {} = props;
+  const { note } = props;
+  const Document = getNoteDocument(note.slug);
   return (
     <Layout>
-      {JSON.stringify(props)}
-      <Document />
+      <Container className={classes.root} maxWidth="md">
+        <Document />
+      </Container>
     </Layout>
   );
 }
@@ -30,35 +41,32 @@ const data = {
 };
 
 interface NotePageParams extends ParsedUrlQuery {
-  slug: string[];
+  slug: string;
 }
 
 export const getStaticPaths: GetStaticPaths<NotePageParams> = async () => {
   return {
-    paths: [
-      {
+    paths: notes.map((note) => {
+      return {
         params: {
-          slug: ["test", "asdf"],
+          slug: note.slug,
         },
-      },
-    ],
+      };
+    }),
     fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps<NotesPageProps, NotePageParams> = async ({ params }) => {
-  const slugChunks: string[] = params.slug as string[];
-  const slug = slugChunks.join("/");
-  console.log({ slug });
-  const content = data[slug];
-  if (!content) {
+  const note = notes.find((note) => note.slug === params.slug);
+  if (!note) {
     return {
       notFound: true,
     };
   }
   return {
     props: {
-      content,
+      note,
     },
   };
 };

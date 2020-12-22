@@ -6,15 +6,15 @@ const theme = createMuiTheme({
   palette: {
     // type: "dark",
     primary: {
-      main: "#25303b"
+      main: "#25303b",
     },
     secondary: {
-      main: "#ffb238"
-    }
+      main: "#ffb238",
+    },
   },
   typography: {
-    fontFamily: `'Ubuntu', sans-serif;`
-  }
+    fontFamily: `'Ubuntu', sans-serif;`,
+  },
 });
 
 export default theme;
