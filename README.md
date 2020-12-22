@@ -1,8 +1,8 @@
-# Alex Bechmann CV
+# Alex Bechmann DotDev site
 
-https://cv.alexbechmann.dev/
+https://alexbechmann.dev/
 
-Built with NextJS, hosted with Kubernetes.
+Built with NextJS, hosted with Kubernetes on my Raspberry Pi cluster.
 
 ## Developing
 
