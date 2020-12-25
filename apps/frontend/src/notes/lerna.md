@@ -1,6 +1,10 @@
+---
+title: Lerna
+---
+
 # Lerna with yarn workspaces
 
-## Installation
+## Create new project
 
 ```bash
 npm init

@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 export function NotePage(props: NotePageProps) {
   const classes = useStyles(props);
   const { note } = props;
-  const Document = getNoteDocument(note.slug);
+  const Document = getNoteDocument(note.slug).default;
   return (
     <Layout>
       <Container className={classes.root} maxWidth="md">
@@ -35,10 +35,6 @@ export function NotePage(props: NotePageProps) {
 }
 
 export default NotePage;
-
-const data = {
-  "test/asdf": { title: "page is 3" },
-};
 
 interface NotePageParams extends ParsedUrlQuery {
   slug: string;

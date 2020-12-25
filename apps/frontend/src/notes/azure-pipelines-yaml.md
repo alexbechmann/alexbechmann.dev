@@ -1,3 +1,7 @@
+---
+title: Azure Pipelines YAML
+---
+
 # Azure pipelines YAML useful snippets
 
 ## Conditions

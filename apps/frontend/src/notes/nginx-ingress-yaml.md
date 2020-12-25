@@ -1,3 +1,7 @@
+---
+title: Nginx Ingress YAML
+---
+
 # K8s Ingress with Nginx
 
 ## Prequisites
