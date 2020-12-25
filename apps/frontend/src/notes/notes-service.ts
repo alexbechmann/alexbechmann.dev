@@ -15,5 +15,5 @@ export const notes: Note[] = Object.values(NoteSlug)
   });
 
 export function getNoteDocument(slug: string): { default: React.ComponentType; frontMatter: FrontMatter } {
-  return require(`./${slug}.md`);
+  return require(`./documents/${slug}.md`);
 }
