@@ -20,7 +20,7 @@ export function NotesPage(props: NotesPageProps) {
   return (
     <Layout>
       <Container maxWidth="md">
-        <Typography variant="h5">Notes</Typography>
+        <Typography variant="h5">Code Library</Typography>
         <List>
           {notes.map((note) => {
             return (

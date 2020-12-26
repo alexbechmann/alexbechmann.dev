@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     right: 0,
     left: 0,
   },
+  appBarRoot: {
+    // backgroundColor: "#333",
+  },
 }));
 
 const Header = () => {
@@ -38,7 +41,7 @@ const Header = () => {
           type: "tween",
         }}
       >
-        <AppBar position="relative">
+        <AppBar color="primary" position="relative" elevation={0} classes={{ root: classes.appBarRoot }}>
           <Container maxWidth="md">
             <Toolbar disableGutters>
               <Link href="/">
@@ -49,13 +52,13 @@ const Header = () => {
               <Link href="/">
                 <a style={{ color: "inherit", textDecoration: "none" }}>
                   <Typography variant="h6" color="inherit">
-                    Alex Bechmann (Web Developer)
+                    alex.bechmann.dev
                   </Typography>
                 </a>
               </Link>
               <div className={classes.grow} />
               <Link href="/notes">
-                <Button color="inherit">Notes</Button>
+                <Button color="inherit">Code library</Button>
               </Link>
               <Tooltip title="Browse some of my projects on GitHub">
                 <IconButton color="inherit" href="https://github.com/alexbechmann">

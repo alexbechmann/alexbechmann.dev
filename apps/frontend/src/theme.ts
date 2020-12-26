@@ -1,19 +1,29 @@
 import { createMuiTheme } from "@material-ui/core/styles";
-import { red } from "@material-ui/core/colors";
+import { indigo } from "@material-ui/core/colors";
 
-// Create a theme instance.
 const theme = createMuiTheme({
   palette: {
-    // type: "dark",
+    type: "dark",
     primary: {
-      main: "#25303b",
+      // main: "#25303b",
+      main: indigo[700],
     },
     secondary: {
       main: "#ffb238",
     },
+    background: {
+      default: "#212121",
+    },
   },
   typography: {
-    fontFamily: `'Ubuntu', sans-serif;`,
+    // fontFamily: `'Ubuntu', sans-serif;`,
+  },
+  overrides: {
+    MuiToolbar: {
+      root: {
+        minHeight: `48px !important`,
+      },
+    },
   },
 });
 

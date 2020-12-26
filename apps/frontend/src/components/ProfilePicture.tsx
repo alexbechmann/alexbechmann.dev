@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import { makeStyles, Avatar } from "@material-ui/core";
 import { motion } from "framer-motion";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   profile: {},
   avatar: {
     border: `3px solid ${theme.palette.primary.dark}`,
-    marginRight: theme.spacing()
+    marginRight: theme.spacing(),
+    width: theme.spacing(4),
+    height: theme.spacing(4),
   },
   config: {
-    duration: 500
-  }
+    duration: 500,
+  },
 }));
 
 function ProfilePicture(props: any) {

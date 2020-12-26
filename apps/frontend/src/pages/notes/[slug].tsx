@@ -15,7 +15,7 @@ export interface NotePageProps {
 const useStyles = makeStyles((theme) => ({
   root: {
     "& pre": {
-      background: "#232323",
+      background: "#101010",
       padding: theme.spacing(2),
       borderRadius: 3,
     },

@@ -27,13 +27,13 @@ metadata:
 spec:
   tls:
     - hosts:
-        - dotdev-{{ .Values.env }}.alexbechmann.dev
-      secretName: dotdev-{{ .Values.env }}.alexbechmann.dev
+        - my-website.alexbechmann.dev
+      secretName: my-website.alexbechmann.dev
     - hosts:
         - alexbechmann.dev
       secretName: alexbechmann.dev
   rules:
-    - host: dotdev-{{ .Values.env }}.alexbechmann.dev
+    - host: my-website.alexbechmann.dev
       http:
         paths:
           - path: /

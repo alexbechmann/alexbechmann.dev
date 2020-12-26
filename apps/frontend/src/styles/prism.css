@@ -285,3 +285,12 @@ pre[class*="language-"] > code[class*="language-"] {
   line-height: inherit;
   white-space: pre;
 }
+
+code.language-bash,
+code.language-bash span {
+  color: white !important;
+}
+
+/* .token.scalar.string {
+  color: white !important;
+} */
