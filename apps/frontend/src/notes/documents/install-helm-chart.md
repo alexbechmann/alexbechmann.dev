@@ -1,3 +1,7 @@
+---
+title: Install helm chart
+---
+
 # Install helm chart
 
 Install a helm chart while accounting for first time run. It will install if it doesn't exist, and create namespace if it doesn't exist.

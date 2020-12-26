@@ -1,11 +1,12 @@
 import React from "react";
 import { Container, makeStyles } from "@material-ui/core";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { NotesPageProps } from ".";
 import { ParsedUrlQuery } from "querystring";
 import Layout from "../../components/Layout";
-import { notes, getNoteDocument } from "../../notes/notes-service";
+import { getNoteDocument } from "../../notes/notes-service";
 import { Note } from "../../notes/note";
+import fs from "fs";
+import path from "path";
 
 export interface NotePageProps {
   note: Note;
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 export function NotePage(props: NotePageProps) {
   const classes = useStyles(props);
   const { note } = props;
-  const Document = getNoteDocument(note.slug);
+  const Document = getNoteDocument(`${note.slug}.md`).default;
   return (
     <Layout>
       <Container className={classes.root} maxWidth="md">
@@ -36,15 +37,20 @@ export function NotePage(props: NotePageProps) {
 
 export default NotePage;
 
-const data = {
-  "test/asdf": { title: "page is 3" },
-};
-
 interface NotePageParams extends ParsedUrlQuery {
   slug: string;
 }
 
 export const getStaticPaths: GetStaticPaths<NotePageParams> = async () => {
+  const documentsDir = path.resolve(process.cwd(), "src/notes/documents");
+  const documentPaths = fs.readdirSync(documentsDir);
+  const notes: Note[] = documentPaths.map((documentPath) => {
+    const { frontMatter } = getNoteDocument(documentPath);
+    return {
+      title: frontMatter.title,
+      slug: documentPath.split(".")[0],
+    };
+  });
   return {
     paths: notes.map((note) => {
       return {
@@ -57,7 +63,16 @@ export const getStaticPaths: GetStaticPaths<NotePageParams> = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<NotesPageProps, NotePageParams> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<NotePageProps, NotePageParams> = async ({ params }) => {
+  const documentsDir = path.resolve(process.cwd(), "src/notes/documents");
+  const documentPaths = fs.readdirSync(documentsDir);
+  const notes: Note[] = documentPaths.map((documentPath) => {
+    const { frontMatter } = getNoteDocument(documentPath);
+    return {
+      title: frontMatter.title,
+      slug: documentPath.split(".")[0],
+    };
+  });
   const note = notes.find((note) => note.slug === params.slug);
   if (!note) {
     return {
