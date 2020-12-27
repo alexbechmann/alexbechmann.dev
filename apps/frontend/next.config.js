@@ -4,6 +4,10 @@ const frontmatter = require("remark-frontmatter");
 const rehypePrism = require("@mapbox/rehype-prism");
 
 module.exports = {
+  /**
+   * @param {import('webpack').Configuration} config
+   * @param {{ buildId: string, dev: boolean, isServer: boolean }} options
+   */
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.module.rules.push({
       test: /\.mdx?$/,
@@ -22,17 +26,16 @@ module.exports = {
           options: {
             rehypePlugins: [rehypePrism],
             remarkPlugins: [
-              images,
-              emoji,
               [
                 frontmatter,
                 {
                   type: "yaml",
                   marker: "-",
-                  fence: "---",
                 },
               ],
             ],
+            images,
+            emoji,
           },
         },
       ],
