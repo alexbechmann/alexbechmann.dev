@@ -27,7 +27,7 @@ export function NotePage(props: NotePageProps) {
   return (
     <Layout>
       <Container className={classes.root} maxWidth="md">
-        <MDXProvider components={{ h1: H1, code: Code }}>
+        <MDXProvider components={{ h1: H1, code: Code, pre: (props) => <div {...props} /> }}>
           <Document />
         </MDXProvider>
       </Container>

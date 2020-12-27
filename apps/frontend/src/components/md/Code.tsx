@@ -1,7 +1,10 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
+import classNames from "classnames";
 
-export interface CodeProps {}
+export interface CodeProps {
+  className: string;
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,6 +17,6 @@ const useStyles = makeStyles((theme) => ({
 
 export function Code(props: React.PropsWithChildren<CodeProps>) {
   const classes = useStyles(props);
-  const {} = props;
-  return <div className={classes.root}>{props.children}</div>;
+  const { children, className } = props;
+  return <pre className={classNames(classes.root, className)}>{children}</pre>;
 }
