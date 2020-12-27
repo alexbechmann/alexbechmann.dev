@@ -8,20 +8,14 @@ import { Note } from "../../notes/note";
 import fs from "fs";
 import path from "path";
 import { MDXProvider } from "@mdx-js/react";
+import { Code } from "../../components/md/Code";
 
 export interface NotePageProps {
   note: Note;
 }
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    "& pre": {
-      background: "#101010",
-      padding: theme.spacing(2),
-      borderRadius: 3,
-      overflowX: "scroll",
-    },
-  },
+  root: {},
 }));
 
 const H1 = (props) => <h1 style={{ color: "tomato" }} {...props} />;
@@ -33,7 +27,7 @@ export function NotePage(props: NotePageProps) {
   return (
     <Layout>
       <Container className={classes.root} maxWidth="md">
-        <MDXProvider components={{ h1: H1 }}>
+        <MDXProvider components={{ h1: H1, code: Code }}>
           <Document />
         </MDXProvider>
       </Container>
