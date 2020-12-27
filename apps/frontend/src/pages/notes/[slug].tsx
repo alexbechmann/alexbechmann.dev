@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, makeStyles } from "@material-ui/core";
+import { Container, makeStyles, Typography } from "@material-ui/core";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { ParsedUrlQuery } from "querystring";
 import Layout from "../../components/Layout";
@@ -18,7 +18,9 @@ const useStyles = makeStyles((theme) => ({
   root: {},
 }));
 
-const H1 = (props) => <h1 style={{ color: "tomato" }} {...props} />;
+const H1 = (props) => <Typography variant="h4" {...props} />;
+const H2 = (props) => <Typography variant="h5" {...props} />;
+const H3 = (props) => <Typography variant="h6" {...props} />;
 
 export function NotePage(props: NotePageProps) {
   const classes = useStyles(props);
@@ -27,7 +29,15 @@ export function NotePage(props: NotePageProps) {
   return (
     <Layout>
       <Container className={classes.root} maxWidth="md">
-        <MDXProvider components={{ h1: H1, code: Code, pre: (props) => <div {...props} /> }}>
+        <MDXProvider
+          components={{
+            h1: H1,
+            h2: H2,
+            h3: H3,
+            code: Code,
+            pre: (props) => <div {...props} />,
+          }}
+        >
           <Document />
         </MDXProvider>
       </Container>

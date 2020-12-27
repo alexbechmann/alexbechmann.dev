@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, List, ListItem, ListItemText, makeStyles, Typography } from "@material-ui/core";
+import { Container, List, ListItem, ListItemIcon, ListItemText, makeStyles, Typography } from "@material-ui/core";
 import Layout from "../../components/Layout";
 import Link from "next/link";
 import { Note } from "../../notes/note";
@@ -7,6 +7,7 @@ import { GetStaticProps } from "next";
 import fs from "fs";
 import path from "path";
 import { getNoteDocument } from "../../notes/notes-service";
+import CodeIcon from "@material-ui/icons/Code";
 
 export interface NotesPageProps {
   notes: Note[];
@@ -25,7 +26,10 @@ export function NotesPage(props: NotesPageProps) {
           {notes.map((note) => {
             return (
               <Link key={note.slug} href={`/notes/${note.slug}`} passHref>
-                <ListItem button component="a">
+                <ListItem button component="a" disableGutters>
+                  <ListItemIcon>
+                    <CodeIcon />
+                  </ListItemIcon>
                   <ListItemText primary={note.title} />
                 </ListItem>
               </Link>
