@@ -24,7 +24,7 @@ export function NotesPage(props: NotesPageProps) {
         <List>
           {notes.map((note) => {
             return (
-              <Link href={`/notes/${note.slug}`} passHref>
+              <Link key={note.slug} href={`/notes/${note.slug}`} passHref>
                 <ListItem button component="a">
                   <ListItemText primary={note.title} />
                 </ListItem>
@@ -43,9 +43,9 @@ export const getStaticProps: GetStaticProps<NotesPageProps> = async () => {
   const documentsDir = path.resolve(process.cwd(), "src/notes/documents");
   const documentPaths = fs.readdirSync(documentsDir);
   const notes: Note[] = documentPaths.map((documentPath) => {
-    const { frontMatter } = getNoteDocument(documentPath);
+    const { attributes } = getNoteDocument(documentPath);
     return {
-      title: frontMatter.title,
+      title: attributes.title,
       slug: documentPath.split(".")[0],
     };
   });

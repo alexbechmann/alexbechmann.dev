@@ -7,6 +7,7 @@ import { getNoteDocument } from "../../notes/notes-service";
 import { Note } from "../../notes/note";
 import fs from "fs";
 import path from "path";
+import { MDXProvider } from "@mdx-js/react";
 
 export interface NotePageProps {
   note: Note;
@@ -18,9 +19,12 @@ const useStyles = makeStyles((theme) => ({
       background: "#101010",
       padding: theme.spacing(2),
       borderRadius: 3,
+      overflowX: "scroll",
     },
   },
 }));
+
+const H1 = (props) => <h1 style={{ color: "tomato" }} {...props} />;
 
 export function NotePage(props: NotePageProps) {
   const classes = useStyles(props);
@@ -29,7 +33,9 @@ export function NotePage(props: NotePageProps) {
   return (
     <Layout>
       <Container className={classes.root} maxWidth="md">
-        <Document />
+        <MDXProvider components={{ h1: H1 }}>
+          <Document />
+        </MDXProvider>
       </Container>
     </Layout>
   );
@@ -45,9 +51,10 @@ export const getStaticPaths: GetStaticPaths<NotePageParams> = async () => {
   const documentsDir = path.resolve(process.cwd(), "src/notes/documents");
   const documentPaths = fs.readdirSync(documentsDir);
   const notes: Note[] = documentPaths.map((documentPath) => {
-    const { frontMatter } = getNoteDocument(documentPath);
+    const { attributes } = getNoteDocument(documentPath);
+
     return {
-      title: frontMatter.title,
+      title: attributes.title,
       slug: documentPath.split(".")[0],
     };
   });
@@ -67,9 +74,9 @@ export const getStaticProps: GetStaticProps<NotePageProps, NotePageParams> = asy
   const documentsDir = path.resolve(process.cwd(), "src/notes/documents");
   const documentPaths = fs.readdirSync(documentsDir);
   const notes: Note[] = documentPaths.map((documentPath) => {
-    const { frontMatter } = getNoteDocument(documentPath);
+    const { attributes } = getNoteDocument(documentPath);
     return {
-      title: frontMatter.title,
+      title: attributes.title,
       slug: documentPath.split(".")[0],
     };
   });

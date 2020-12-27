@@ -1,3 +1,7 @@
+const images = require("remark-images");
+const emoji = require("remark-emoji");
+const frontmatter = require("remark-frontmatter");
+
 module.exports = {
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     config.module.rules.push({
@@ -9,7 +13,26 @@ module.exports = {
             presets: ["@babel/preset-react", "@babel/preset-env"],
           },
         },
-        "mdx-loader",
+        {
+          loader: "mdx-frontmatter-loader",
+        },
+        {
+          loader: "@mdx-js/loader",
+          options: {
+            remarkPlugins: [
+              images,
+              emoji,
+              [
+                frontmatter,
+                {
+                  type: "yaml",
+                  marker: "-",
+                  fence: "---",
+                },
+              ],
+            ],
+          },
+        },
       ],
     });
     return config;
