@@ -6,13 +6,15 @@ const theme = createMuiTheme({
     type: "dark",
     primary: {
       // main: "#25303b",
-      main: indigo[700],
+      // main: indigo[700],
+      main: "#192027",
     },
     secondary: {
       main: "#ffb238",
     },
     background: {
-      default: "#212121",
+      // default: "#212121",
+      default: "#25303b",
     },
   },
   typography: {

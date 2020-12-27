@@ -27,6 +27,7 @@
     "start": "next start"
   },
   "devDependencies": {
+    "@mapbox/rehype-prism": "^0.5.0",
     "@types/mdx-js__react": "^1.5.3",
     "@types/node": "^13.7.7",
     "mdx-frontmatter-loader": "^0.1.1",
